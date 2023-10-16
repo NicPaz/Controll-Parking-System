@@ -13,6 +13,7 @@ public class Veiculo {
     private String placa;
     private String cor;
     private Date data;
+    private String observacao;
 
     public int getCodigo() {
         return codigo;
@@ -50,7 +51,11 @@ public class Veiculo {
     public void setData(Date data) {
         this.data = data;
     }
-    
-    
+    public String getObservacao() {
+        return observacao;
+    }
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
     
 }
