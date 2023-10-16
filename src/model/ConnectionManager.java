@@ -8,9 +8,9 @@ public class ConnectionManager {
     private static Connection conexao;
 
     public static Connection getConnection() throws ClassNotFoundException, SQLException {
-        String url = "jdbc:mysql://127.0.0.1/parking?characterEncoding=latin1";
+        String url = "jdbc:mysql://localhost/parking?characterEncoding=latin1";
         String usuario = "root";
-        String senha = "bancodedados";
+        String senha = "";
 
         Class.forName("com.mysql.cj.jdbc.Driver");
         conexao = DriverManager.getConnection(url, usuario, senha);
