@@ -14,9 +14,9 @@ public class DaoVeiculo {
             this.conn = ConnectionManager.getConnection();
             st = conn.createStatement();
         } catch(ClassNotFoundException e1){
-            System.out.println("Erro ao carregar o driver" + e1.getMessage());
+            System.out.println("Erro ao carregar o driver " + e1.getMessage());
         } catch(SQLException e2){
-            System.out.println("Erro ao conectar ao banco de dados" + e2.getMessage());
+            System.out.println("Erro ao conectar ao banco de dados " + e2.getMessage());
         }
         
     }

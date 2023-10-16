@@ -3,13 +3,13 @@ import java.util.ArrayList;
 
 import model.DaoVeiculo;
 import model.Veiculo;
+import view.TelaInicial;
 
 
 public class ControllParkingSystem {
 
     public static void main(String[] args) {
         DaoVeiculo daoVeiculo = new DaoVeiculo();
-
         // Buscando todos os veículos
         ArrayList<Veiculo> veiculos = daoVeiculo.buscarTodos();
         System.out.println("Veículos encontrados:");
@@ -26,5 +26,9 @@ public class ControllParkingSystem {
         } else {
             System.out.println("Veículo não encontrado.");
         }
+        
+         new TelaInicial().setVisible(true);
     }
+    
+    
 }
