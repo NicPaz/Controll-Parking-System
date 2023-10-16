@@ -1,12 +1,11 @@
 create database parking;
 use parking;
+create table tb_veiculos(codigo int not null auto_increment, modelo varchar(40) not null, placa varchar(30) not null, nome varchar(30) not null, cor varchar(30) not null, data datetime not null, observacao varchar(200), primary key(codigo));
 
-create table tb_veiculos(codigo int not null auto_increment, modelo varchar(40) not null, placa varchar(30) not null, nome varchar(30) not null, cor varchar(30) not null, data datetime not null, primary key(codigo));
-
-INSERT INTO tb_veiculos (modelo, placa, nome, cor, data)
+INSERT INTO tb_veiculos (modelo, placa, nome, cor, data, observacao)
 VALUES 
-('HB20', 'ABC1234', 'João Silva', 'Vermelho', '2023-10-15 08:00:00'),
-('Gol', 'DEF5678', 'Maria Oliveira', 'Azul', '2023-10-15 09:00:00'),
-('Fusion', 'GHI9012', 'Carlos Pereira', 'Verde', '2023-10-15 10:00:00'),
-('Corolla', 'JKL3456', 'Ana Sousa', 'Preto', '2023-10-15 11:00:00'),
-('Civic', 'MNO7890', 'Luiz Santos', 'Branco', '2023-10-15 12:00:00');
+('HB20', 'ABC1234', 'João Silva', 'Vermelho', '2023-10-15 08:00:00','Estacionado no piso 2'),
+('Gol', 'DEF5678', 'Maria Oliveira', 'Azul', '2023-10-15 09:00:00','Vaga reservada para clientes VIP'),
+('Fusion', 'GHI9012', 'Carlos Pereira', 'Verde', '2023-10-15 10:00:00',''),
+('Corolla', 'JKL3456', 'Ana Sousa', 'Preto', '2023-10-15 11:00:00','Estacionado próximo à saída'),
+('Civic', 'MNO7890', 'Luiz Santos', 'Branco', '2023-10-15 12:00:00','');

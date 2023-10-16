@@ -40,7 +40,7 @@ public class DaoVeiculo {
             java.text.SimpleDateFormat sdf = 
                 new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String currentTime = sdf.format(dt);
-            String comando = "INSERT INTO tb_veiculos (modelo, placa, nome, cor, data) VALUES ('" + v.getModelo() + "', '" + v.getPlaca() + "', '" + v.getNome() + "', '" + v.getCor() + "', '" + currentTime + "');";
+            String comando = "INSERT INTO tb_veiculos (modelo, placa, nome, cor, data, observacoes) VALUES ('" + v.getModelo() + "', '" + v.getPlaca() + "', '" + v.getNome() + "', '" + v.getCor() + "', '" + currentTime + "', '" + v.getObservacao() + "');";
             System.out.println(comando);
             st.executeUpdate(comando);
             resultado = true;
@@ -65,6 +65,7 @@ public class DaoVeiculo {
                 v.setNome(rs.getString("nome"));
                 v.setCor(rs.getString("cor"));
                 v.setData(rs.getDate("data"));
+                v.setObservacao(rs.getString("observacao"));
                 resultados.add(v);
             }
 
@@ -87,8 +88,9 @@ public class DaoVeiculo {
                 v.setModelo(rs.getString("modelo"));
                 v.setPlaca(rs.getString("placa"));
                 v.setNome(rs.getString("nome"));
-                v.setNome(rs.getString("cor"));
+                v.setCor(rs.getString("cor"));
                 v.setData(rs.getDate("data"));
+                v.setObservacao(rs.getString("observacao"));
             }
 
         } catch(Exception e){
