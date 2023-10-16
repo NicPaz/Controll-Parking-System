@@ -1,9 +1,11 @@
 package model;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class DaoVeiculo {
     private Connection conn;
@@ -100,6 +102,35 @@ public class DaoVeiculo {
         }
         return v;
     }
+    
+    public ArrayList<Veiculo> buscarCampos(String termo, Date dataInicio, Date dataFim){
+        ArrayList<Veiculo> resultados = new ArrayList<Veiculo>();
+        try{
+            this.conectar();
+            PreparedStatement ps = conn.prepareStatement("SELECT * FROM tb_veiculos WHERE (data BETWEEN ? AND ?);");
+            ps.setTimestamp(1, new java.sql.Timestamp(dataInicio.getTime()));
+            ps.setTimestamp(2, new java.sql.Timestamp(dataFim.getTime()));
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                Veiculo v = new Veiculo();
+                v.setModelo(rs.getString("modelo"));
+                v.setPlaca(rs.getString("placa"));
+                v.setNome(rs.getString("nome"));
+                v.setCor(rs.getString("cor"));
+    
+                // Verifica se algum campo contém o termo de busca
+                if (v.toString().toLowerCase().contains(termo.toLowerCase())) {
+                    resultados.add(v);
+                }
+            }
+        } catch(Exception e){
+            System.out.println("Erro ao buscar veiculos: " + e.getMessage());
+        } finally{
+            this.desconectar();
+        }
+        return resultados;
+    }
+    
 
     
 }
