@@ -8,10 +8,6 @@ import javax.swing.JOptionPane;
 import model.DaoVeiculo;
 import model.Veiculo;
 
-/**
- *
- * @author allan
- */
 public class TelaCadastroVeiculo extends javax.swing.JFrame {
 
     /**
@@ -224,7 +220,7 @@ public class TelaCadastroVeiculo extends javax.swing.JFrame {
             veiculo.setModelo(tfModelo.getText());
             veiculo.setCor(tfCor.getText());
             veiculo.setNome(tfNome.getText());
-            //veiculo.setObervacao(tfObservacao.getText());
+            veiculo.setObservacao(tfObservacao.getText());
            
             daoVeiculo.inserir(veiculo);
             this.limparCampos();
@@ -244,7 +240,7 @@ public class TelaCadastroVeiculo extends javax.swing.JFrame {
         tfModelo.setText("");
         tfCor.setText("");
         tfNome.setText("");
-        //tfObervacao.setText("");
+        tfObservacao.setText("");
     }
     /**
      * @param args the command line arguments

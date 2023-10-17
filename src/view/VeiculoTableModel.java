@@ -9,10 +9,7 @@ import java.util.ArrayList;
 import javax.swing.table.AbstractTableModel;
 import model.Veiculo;
 
-/**
- *
- * @author lab
- */
+
 public class VeiculoTableModel extends AbstractTableModel{
     public static final int COL_MODELO = 0;
     public static final int COL_COR = 1;

@@ -42,7 +42,7 @@ public class DaoVeiculo {
             java.text.SimpleDateFormat sdf = 
                 new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
             String currentTime = sdf.format(dt);
-            String comando = "INSERT INTO tb_veiculos (modelo, placa, nome, cor, data, observacoes) VALUES ('" + v.getModelo() + "', '" + v.getPlaca() + "', '" + v.getNome() + "', '" + v.getCor() + "', '" + currentTime + "', '" + v.getObservacao() + "');";
+            String comando = "INSERT INTO tb_veiculos (modelo, placa, nome, cor, data, observacao) VALUES ('" + v.getModelo() + "', '" + v.getPlaca() + "', '" + v.getNome() + "', '" + v.getCor() + "', '" + currentTime + "', '" + v.getObservacao() + "');";
             System.out.println(comando);
             st.executeUpdate(comando);
             resultado = true;
@@ -118,11 +118,13 @@ public class DaoVeiculo {
                 v.setNome(rs.getString("nome"));
                 v.setCor(rs.getString("cor"));
     
-                // Verifica se algum campo contém o termo de busca
-                if (v.toString().toLowerCase().contains(termo.toLowerCase())) {
-                    resultados.add(v);
-                }
-            }
+                if (v.getModelo().toLowerCase().contains(termo.toLowerCase()) ||
+                    v.getPlaca().toLowerCase().contains(termo.toLowerCase()) ||
+                    v.getNome().toLowerCase().contains(termo.toLowerCase()) ||
+                    v.getCor().toLowerCase().contains(termo.toLowerCase())) {
+                        resultados.add(v);
+                    }
+            }  
         } catch(Exception e){
             System.out.println("Erro ao buscar veiculos: " + e.getMessage());
         } finally{

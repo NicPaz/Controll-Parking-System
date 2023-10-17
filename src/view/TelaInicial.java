@@ -6,21 +6,43 @@ package view;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import javax.swing.Timer;
 
-/**
- *
- * @author allan
- */
+
 public class TelaInicial extends javax.swing.JFrame {
 
     /**
      * Creates new form TelaInicial
      */
+    
+    private Timer timer;
+    
     public TelaInicial() {
         initComponents();
+        iniciarTimer();
+    }
+    
+      private void iniciarTimer() {
+        ActionListener actionListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                atualizarHorario();
+            }
+        };
+        
+        timer = new Timer(1000, actionListener); // A cada 1 segundo (1000 milissegundos)
+        timer.setInitialDelay(0);
+        timer.start();
+    }
+
+    private void atualizarHorario() {
         Calendar cal = Calendar.getInstance(); 
         cal.getTime(); 
-        SimpleDateFormat sdf = new SimpleDateFormat("EEEE HH:mm:ss"); 
+        SimpleDateFormat sdf = new SimpleDateFormat("EEEE, HH:mm:ss"); 
         jDiaAtual.setText(sdf.format(cal.getTime()));
     }
 
